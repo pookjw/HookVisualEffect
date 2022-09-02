@@ -52,12 +52,8 @@ class ViewController: UIViewController {
             firstVibrancyView.bottomAnchor.constraint(equalTo: firstBlurView.contentView.bottomAnchor)
         ])
         
-        firstSlider = .init(frame: .null, primaryAction: UIAction(handler: { [unowned self] action in
-            let slider: UISlider = action.sender as! UISlider
-            self.firstBlurView.intensity = CGFloat(slider.value)
-            //            self.firstVibrancyView.intensity = CGFloat(slider.value)
-            self.firstLabel.text = "intensity = \(self.firstBlurView.intensity)"
-        }))
+        firstSlider = .init()
+        firstSlider.addTarget(self, action: #selector(sliderDidChange(_:)), for: .valueChanged)
         firstSlider.minimumValue = .zero
         firstSlider.maximumValue = 50
         firstSlider.value = Float(firstBlurView.intensity)
@@ -115,6 +111,12 @@ class ViewController: UIViewController {
             secondLabel.leadingAnchor.constraint(equalTo: secondVibrancyView.contentView.leadingAnchor),
             secondLabel.trailingAnchor.constraint(equalTo: secondVibrancyView.contentView.trailingAnchor)
         ])
+    }
+
+    @objc private func sliderDidChange(_ sender: UISlider) {
+        self.firstBlurView.intensity = CGFloat(sender.value)
+        //            self.firstVibrancyView.intensity = CGFloat(slider.value)
+        self.firstLabel.text = "intensity = \(self.firstBlurView.intensity)"
     }
 }
 
