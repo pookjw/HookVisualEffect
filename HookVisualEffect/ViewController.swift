@@ -114,9 +114,8 @@ class ViewController: UIViewController {
     }
 
     @objc private func sliderDidChange(_ sender: UISlider) {
-        self.firstBlurView.intensity = CGFloat(sender.value)
-        //            self.firstVibrancyView.intensity = CGFloat(slider.value)
-        self.firstLabel.text = "intensity = \(self.firstBlurView.intensity)"
+        firstBlurView.intensity = CGFloat(sender.value)
+        firstLabel.text = "intensity = \(self.firstBlurView.intensity)"
     }
 }
 
